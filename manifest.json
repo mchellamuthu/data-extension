@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "SuccessApp Chrome Extension",
+    "description": "SuccessApp Chrome Extension",
+    "version": "0.1",
+    "permissions": [
+        "tabs",
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
+    "action": {
+        "default_title": "Success.app",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "service_worker": "js/background.js"
+    },
+
+    "content_scripts": [{
+        "matches": ["*://mail.google.com/*"],
+        "js": ["js/content.js"],
+        "run_at": "document_start"
+
+    }],
+
+    "host_permissions": ["http://localhost/*", "*://*/*"]
+}
